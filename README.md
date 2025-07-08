@@ -44,7 +44,7 @@ react-component/
 
 ---
 
-## 🎯 개발 철학
+## 🎯 개발 원칙
 
 - **컴포넌트 재사용성 중심**
 - **스타일은 각 컴포넌트 폴더 내에 모듈화**
@@ -94,5 +94,5 @@ npm publish --access public
 ## 👤 제작자
 
 - 이름: 김서이
-- GitHub: [링크 추가]
+- GitHub: [https://github.com/seoyikim/react-component](https://github.com/seoyikim/react-component)
 - 프로젝트명: `react-component`
