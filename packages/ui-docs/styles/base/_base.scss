@@ -16,7 +16,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-// 텍스트 요소
 h1,
 h2,
 h3,
@@ -35,18 +34,15 @@ em {
     font-style: normal;
 }
 
-// 링크 스타일
 a {
     color: inherit;
     text-decoration: none;
 }
 
-// 버튼
 button {
     cursor: pointer;
 }
 
-// 입력 요소 포커스 처리
 input:focus,
 textarea:focus,
 select:focus {

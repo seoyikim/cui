@@ -9,42 +9,65 @@ const Button = React.forwardRef(
       children,
       variant = 'contained',
       size = 'medium',
-      width,
-      height,
       color = 'primary',
       disabled = false,
       fullWidth = false,
-      startIcon,
-      endIcon,
       className,
       onClick,
+      href,
+      target,
       ...props
     },
     ref
   ) => {
-    const buttonClasses = classNames(
-      styles.button,
-      styles[variant],
-      styles[size],
-      styles[color],
+    const buttonClass = classNames(
+      styles['cui-button'],
+      styles[`cui-button--variant-${variant}`],
+      styles[`cui-button--size-${size}`],
+      styles[`cui-button--color-${color}`],
       {
-        [styles.fullWidth]: fullWidth,
-        [styles.disabled]: disabled,
+        [styles['cui-button--full-width']]: fullWidth,
+        [styles['cui-button--disabled']]: disabled,
       },
       className
     );
 
+    const handleClick = e => {
+      if (disabled) {
+        e.preventDefault();
+        return;
+      }
+      if (onClick) {
+        onClick(e);
+      }
+    };
+
+    // href가 있으면 a 태그로 렌더링
+    if (href) {
+      return (
+        <a
+          ref={ref}
+          href={href}
+          className={buttonClass}
+          onClick={handleClick}
+          target={target}
+          {...props}
+        >
+          {children}
+        </a>
+      );
+    }
+
+    // href가 없으면 button 태그로 렌더링
     return (
       <button
         ref={ref}
-        className={buttonClasses}
+        className={buttonClass}
         disabled={disabled}
-        onClick={onClick}
+        onClick={handleClick}
         {...props}
       >
-        {startIcon && <span className={styles.startIcon}>{startIcon}</span>}
         {children}
-        {endIcon && <span className={styles.endIcon}>{endIcon}</span>}
       </button>
     );
   }
@@ -52,15 +75,15 @@ const Button = React.forwardRef(
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
-  variant: PropTypes.oneOf(['contained', 'outlined', 'text']),
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  variant: PropTypes.oneOf(['contained', 'outlined', 'text', 'underlined']),
+  size: PropTypes.oneOf(['small', 'medium', 'large', 'inline']),
   color: PropTypes.string,
   disabled: PropTypes.bool,
   fullWidth: PropTypes.bool,
-  startIcon: PropTypes.node,
-  endIcon: PropTypes.node,
   className: PropTypes.string,
   onClick: PropTypes.func,
+  href: PropTypes.string,
+  target: PropTypes.string,
 };
 
 Button.displayName = 'Button';

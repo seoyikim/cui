@@ -1,4 +1,6 @@
-.button {
+@import '../../styles/abstracts/variables';
+
+.cui-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -7,111 +9,148 @@
     border-radius: 4px;
     font-family: inherit;
     font-weight: 500;
-    cursor: pointer;
     transition: all 0.2s ease-in-out;
-    text-decoration: none;
 
-    &:focus-visible {
-        outline: 2px solid var(--focus-ring-color, blue);
-        outline-offset: 2px;
+    // Variants
+    &--variant {
+        &-contained {
+        background-color: var(--button-primary-background, #{$button-primary-background});
+            color: var(--button-text-light, $button-text-light);
+
+            &:hover:not(.cui-button--disabled) {
+                background-color: var(--button-primary-background-hover, $button-primary-background-hover);
+            }
+        }
+
+        &-outlined {
+            background-color: transparent;
+            border: 1px solid var(--button-primary-border, $button-primary-border);
+            color: var(--button-primary-text, $button-primary-text);
+
+            &:hover:not(.cui-button--disabled) {
+                background-color: var(--button-primary-background-hover-outlined, $color-gray-light-transparent);
+            }
+        }
+
+        &-text {
+            background-color: transparent;
+            border: none;
+            color: var(--button-primary-text, $button-primary-text);
+        }
+
+        &-underlined {
+            color: var(--button-primary-text, $button-primary-text);
+            text-decoration: underline;
+            text-underline-position: under;
+            text-decoration-thickness: 1px;
+            text-decoration-color: var(--button-primary-text, $button-primary-text);
+            text-decoration-style: solid;
+
+            &:hover:not(.cui-button--disabled) {
+                text-decoration-color: var(--button-primary-background-hover, $button-primary-background-hover);
+            }
+        }
+    }
+
+    // Sizes
+    &--size {
+        &-small {
+            padding: 6px 12px;
+            font-size: 0.875rem;
+        }
+
+        &-medium {
+            padding: 10px 20px;
+            font-size: 1rem;
+        }
+
+        &-large {
+            padding: 12px 24px;
+            font-size: 1.125rem;
+        }
+
+        &-inline {
+            padding: 0;
+        }
+    }
+
+    // Colors
+    &--color {
+        &-primary {
+            --button-primary-background: #{$button-primary-background};
+            --button-primary-background-hover: #{$button-primary-background-hover};
+            --button-primary-border: #{$button-primary-border};
+            --button-primary-text: #{$button-primary-text};
+            --button-primary-background-hover-outlined: #{$color-gray-light-transparent};
+            --button-primary-background-hover-text: #{$color-gray-light-transparent};
+            --button-text-light: #{$button-text-light};
+        }
+
+        &-secondary {
+            --button-primary-background: #{$button-secondary-background};
+            --button-primary-background-hover: #{$button-secondary-background-hover};
+            --button-primary-border: #{$button-secondary-border};
+            --button-primary-text: #{$button-secondary-text};
+            --button-primary-background-hover-outlined: #{$button-secondary-background-hover-outlined};
+            --button-primary-background-hover-text: #{$button-secondary-background-hover-outlined};
+            --button-text-light: #{$button-secondary-text-light};
+        }
+    }
+
+    &--full-width {
+        width: 100%;
+    }
+
+    &--disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        pointer-events: none;
     }
 }
 
-.contained {
-    background-color: var(--button-primary-background, #000);
-    color: var(--button-text-light, #ffffff);
-
-    &:hover:not(.disabled) {
-        background-color: var(--button-primary-background-hover, #222);
-    }
-}
-
-.outlined {
-    background-color: transparent;
-    border-color: var(--button-primary-border, #000);
-    color: var(--button-primary-text, #000);
-
-    &:hover:not(.disabled) {
-        background-color: var(--button-primary-background-hover-outlined, rgba(0, 123, 255, 0.08));
-    }
-}
-
-.text {
-    background-color: transparent;
-    border-color: transparent;
-    color: var(--button-primary-text, #000);
-
-    &:hover:not(.disabled) {
-        // background-color: var(--button-primary-background-hover-text, rgba(0, 123, 255, 0.08));
-    }
-}
-
-.small {
-    padding: 6px 12px;
-    font-size: 0.875rem;
-}
-
-.medium {
-    padding: 10px 20px;
-    font-size: 1rem;
-}
-
-.large {
-    padding: 12px 24px;
-    font-size: 1.125rem;
-}
-
-.primary {
-    --button-primary-background: #000;
-    --button-primary-background-hover: #222;
-    --button-primary-border: #000;
-    --button-primary-text: #000;
-    --button-primary-background-hover-outlined: rgba(0, 123, 255, 0.08);
-    --button-primary-background-hover-text: rgba(0, 123, 255, 0.08);
-    --button-text-light: #ffffff;
-}
-
-.secondary {
-    --button-primary-background: #000;
-    --button-primary-background-hover: #222;
-    --button-primary-border: #000;
-    --button-primary-text: #000;
-    --button-primary-background-hover-outlined: rgba(108, 117, 125, 0.08);
-    --button-primary-background-hover-text: rgba(108, 117, 125, 0.08);
-    --button-text-light: #ffffff;
-}
-
-.danger {
-    --button-primary-background: #dc3545;
-    --button-primary-background-hover: #c82333;
-    --button-primary-border: #dc3545;
-    --button-primary-text: #dc3545;
-    --button-primary-background-hover-outlined: rgba(220, 53, 69, 0.08);
-    --button-primary-background-hover-text: rgba(220, 53, 69, 0.08);
-    --button-text-light: #ffffff;
-}
-
-
-.fullWidth {
-    width: 100%;
-}
-
-.disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
-.startIcon,
-.endIcon {
+// button group
+.cui-button-group {
     display: flex;
-    align-items: center;
-}
+    width: 100%;
+    &--orientation {
+        &-vertical {
+            flex-direction: column;
+        }
+    }
 
-.startIcon {
-    margin-right: 8px;
-}
+    &--spacing {
+        &-small {
+            gap: 4px;
+        }
 
-.endIcon {
-    margin-left: 8px;
+        &-medium {
+            gap: 8px;
+        }
+
+        &-large {
+            gap: 16px;
+        }
+
+        &-none {
+            gap: 0;
+        }
+    }
+
+    &--justify {
+        &-start {
+            justify-content: flex-start;
+        }
+
+        &-center {
+            justify-content: center;
+        }
+
+        &-end {
+            justify-content: flex-end;
+        }
+
+        &-space-between {
+            justify-content: space-between;
+        }
+    }
 }

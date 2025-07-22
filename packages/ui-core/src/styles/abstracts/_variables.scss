@@ -1,1 +1,23 @@
+$color-black: #000;
+$color-white: #ffffff;
+$color-dark-gray: #222;
+$color-red: #dc3545;
+$color-dark-red: #c82333;
+$color-gray-light-transparent: rgba(108, 117, 125, 0.08);
+$color-red-light-transparent: rgba(220, 53, 69, 0.08);
 
+// Button
+$button-primary-background: $color-black;
+$button-primary-background-hover: $color-dark-gray;
+$button-primary-border: $color-black;
+$button-primary-text: $color-black;
+$button-text-light: $color-white;
+
+// Secondary 
+$button-secondary-background: #999999;
+$button-secondary-background-hover: #7a7a7a;
+$button-secondary-border: #999999;
+$button-secondary-text: $color-white;
+$button-secondary-background-hover-outlined: rgba(153, 153, 153, 0.12);
+$button-secondary-background-hover-text: rgba(153, 153, 153, 0.12);
+$button-secondary-text-light: $color-white;
