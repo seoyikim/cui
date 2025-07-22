@@ -2,7 +2,7 @@
   "name": "ui-core",
   "version": "0.1.0",
   "main": "src/index.js",
-  "private": true,
+  "private": false,
   "dependencies": {
     "classnames": "^2.5.1"
   }

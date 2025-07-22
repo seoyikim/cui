@@ -1,4 +1,4 @@
-@import '../../styles/abstracts/variables';
+@use '../../styles/abstracts/variables' as *;
 
 .cui-button {
     display: inline-flex;
@@ -14,7 +14,7 @@
     // Variants
     &--variant {
         &-contained {
-        background-color: var(--button-primary-background, #{$button-primary-background});
+            background-color: var(--button-primary-background, #{$button-primary-background});
             color: var(--button-text-light, $button-text-light);
 
             &:hover:not(.cui-button--disabled) {
@@ -112,6 +112,7 @@
 .cui-button-group {
     display: flex;
     width: 100%;
+
     &--orientation {
         &-vertical {
             flex-direction: column;

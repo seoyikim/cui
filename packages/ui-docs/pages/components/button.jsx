@@ -1,4 +1,4 @@
-import Button from 'ui-core/src/components/button';
+import { Button } from 'ui-core';
 
 export default function ButtonDemoPage() {
   return (

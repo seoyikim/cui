@@ -1,5 +1,4 @@
-import Button from 'ui-core/src/components/button/button';
-import ButtonGroup from 'ui-core/src/components/button/buttonGroup';
+import { Button, ButtonGroup } from 'ui-core';
 
 export default function ButtonGroupDemoPage() {
   return (
