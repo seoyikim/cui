@@ -48,3 +48,6 @@ packages/*/.next/
 Thumbs.db
 
 .shopify/
+
+# Netlify
+/netlify.toml
