@@ -1,9 +1,7 @@
-import '../styles/index.module.scss';
-
 export default function HomePage() {
   return (
-    <div className={styles['cui-overview']}>
-      <section className={styles['cui-overview__header']}>
+    <div className='cui-overview'>
+      <section className='cui-overview__header'>
         <h2>React Components UI Guide</h2>
         <p>
           MUI 스타일을 기반으로 제작된 React UI 컴포넌트 라이브러리입니다.
@@ -15,10 +13,10 @@ export default function HomePage() {
         </p>
       </section>
 
-      <section className={styles['cui-overview__section']}>
+      <section className='cui-overview__section'>
         <h3>개발 환경 및 폴더 구조</h3>
 
-        <div className={styles['cui-overview__box']}>
+        <div className='cui-overview__box'>
           <h4>사용 환경</h4>
           <ul>
             <li>
@@ -36,7 +34,7 @@ export default function HomePage() {
           </ul>
         </div>
 
-        <div className={styles['cui-overview__box']}>
+        <div className='cui-overview__box'>
           <h4>폴더 구조</h4>
           <pre>
             {`react-component/
@@ -74,7 +72,7 @@ export default function HomePage() {
           </pre>
         </div>
 
-        <div className={styles['cui-overview__box']}>
+        <div className='cui-overview__box'>
           <h4>폴더별 역할 요약</h4>
           <table>
             <thead>
@@ -108,7 +106,7 @@ export default function HomePage() {
           </table>
         </div>
 
-        <div className={styles['cui-overview__box']}>
+        <div className='cui-overview__box'>
           <h3>컴포넌트 작성 가이드</h3>
           <ul>
             <li>
@@ -123,7 +121,7 @@ export default function HomePage() {
           </ul>
         </div>
 
-        <div className={styles['cui-overview__box']}>
+        <div className='cui-overview__box'>
           <h3>네이밍 & Props 규칙</h3>
           <h4>클래스 네이밍 (BEM)</h4>
           <table>
@@ -211,11 +209,11 @@ export default function HomePage() {
           </table>
         </div>
 
-        <div className={styles['cui-overview__box']}>
+        <div className='cui-overview__box'>
           <h3>NPM 배포 준비 (ui-core)</h3>
           <pre>
-            cd packages/ui-core # 빌드 npm run build # 로그인 후 배포 npm
-            publish --access public
+            {`cd packages/ui-core # 빌드 npm run build # 로그인 후 배포 npm
+            publish --access public`}
           </pre>
           <p>
             <code>package.json</code>에{' '}
@@ -224,7 +222,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className={styles['cui-overview__box']}>
+        <div className='cui-overview__box'>
           <h3>추후 기능 추가 예정</h3>
           <ul>
             <li>컴포넌트 단위 테스트 환경 설정</li>
@@ -235,7 +233,7 @@ export default function HomePage() {
           </ul>
         </div>
 
-        <div className={styles['cui-overview__box']}>
+        <div className='cui-overview__box'>
           <h3>제작자</h3>
           <p>
             이름: 김서이
