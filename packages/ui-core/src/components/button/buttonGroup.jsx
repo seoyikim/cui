@@ -17,9 +17,9 @@ const ButtonGroup = React.forwardRef(
   ) => {
     const groupClass = classNames(
       styles['cui-button-group'],
-      styles[`cui-button-group--orientation-${orientation}`],
-      styles[`cui-button-group--spacing-${spacing}`],
-      styles[`cui-button-group--justify-${justifyContent}`],
+      styles['cui-button-group--orientation-' + orientation],
+      styles['cui-button-group--spacing-' + spacing],
+      styles['cui-button-group--justify-' + justifyContent],
       className
     );
 

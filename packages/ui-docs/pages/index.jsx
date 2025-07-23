@@ -2,7 +2,7 @@ export default function HomePage() {
   return (
     <div className='cui-overview'>
       <section className='cui-overview__header'>
-        <h2>React Components UI Guide</h2>
+        <h2>Components UI Guide</h2>
         <p>
           MUI 스타일을 기반으로 제작된 React UI 컴포넌트 라이브러리입니다.
           <br />
@@ -37,38 +37,41 @@ export default function HomePage() {
         <div className='cui-overview__box'>
           <h4>폴더 구조</h4>
           <pre>
-            {`react-component/
+            {`cui/
 ├── packages/
-│   ├── ui-core/
+│   ├── ui-core/                                       # UI 컴포넌트 라이브러리 (배포 대상)
 │   │   └── src/
-│   │       ├── components/
-│   │       │   └── button/
+│   │       ├── components/                           # 재사용 컴포넌트 (예: button, input 등)
+│   │       │   └── Button/
 │   │       │       ├── button.jsx
 │   │       │       ├── button.module.scss
 │   │       │       └── index.js
-│   │       ├── hooks/
-│   │       ├── styles/
-│   │       ├── utils/
-│   │       └── index.js
-│   └── ui-docs/
-│       ├── layout/
-│       │   ├── header/
+│   │       ├── hooks/                                # 공통 커스텀 훅
+│   │       ├── styles/                               # SCSS 구조화 (abstracts, base 등)
+│   │       ├── utils/                                # 유틸 함수
+│   │       └── index.js                              # 라이브러리 진입점 (export 모음)
+│
+│   └── ui-docs/                                       # 가이드 및 문서 사이트 (Next.js)
+│       ├── layout/                                    # Header, Sidebar 등 레이아웃
+│       │   ├── Header/
 │       │   │   ├── header.jsx
 │       │   │   └── header.module.scss
-│       │   └── sidebar/
+│       │   └── Sidebar/
 │       │       ├── layout.jsx
 │       │       └── layout.module.scss
-│       ├── pages/
-│       │   ├── components/
+│       ├── pages/                                    # Next.js 라우팅 기반 문서
+│       │   ├── components/                          # 각 컴포넌트 문서
 │       │   │   ├── button.jsx
 │       │   │   ├── form.jsx
 │       │   │   └── table.jsx
 │       │   ├── _app.js
 │       │   └── index.jsx
-│       ├── styles/
+│       ├── styles/                                   # 문서 전용 SCSS
 │       └── package.json
-├── package.json
-└── README.md`}
+│
+├── package.json                                       # 루트 워크스페이스 설정
+
+└── README.md                                          # 본 문서`}
           </pre>
         </div>
 
@@ -152,7 +155,7 @@ export default function HomePage() {
             no-border
           </p>
 
-          <h4>파일/폴더 네이밍</h4>
+          <h4 className='cui-title-h4'>파일/폴더 네이밍</h4>
           <table>
             <thead>
               <tr>
@@ -175,7 +178,7 @@ export default function HomePage() {
             </tbody>
           </table>
 
-          <h4>공통 Props 패턴</h4>
+          <h4 className='cui-title-h4'>공통 Props 패턴</h4>
           <table>
             <thead>
               <tr>
@@ -212,8 +215,7 @@ export default function HomePage() {
         <div className='cui-overview__box'>
           <h3>NPM 배포 준비 (ui-core)</h3>
           <pre>
-            {`cd packages/ui-core # 빌드 npm run build # 로그인 후 배포 npm
-            publish --access public`}
+            {`cd packages/ui-core # 빌드 npm run build # 로그인 후 배포 npm publish --access public`}
           </pre>
           <p>
             <code>package.json</code>에{' '}
@@ -225,10 +227,10 @@ export default function HomePage() {
         <div className='cui-overview__box'>
           <h3>추후 기능 추가 예정</h3>
           <ul>
+            <li>컴포넌트 개발 환경 명확화 (ui-core)</li>
             <li>컴포넌트 단위 테스트 환경 설정</li>
             <li>라우트 중앙 관리 (routes/appRoutes.js)</li>
             <li>메뉴 자동 생성 (from appRoutes)</li>
-            <li>컴포넌트 개발 환경 명확화 (ui-core)</li>
             <li>NPM 배포 스크립트 및 문서 정리</li>
           </ul>
         </div>
@@ -239,14 +241,11 @@ export default function HomePage() {
             이름: 김서이
             <br />
             GitHub:{' '}
-            <a
-              href='https://github.com/seoyikim/react-component'
-              target='_blank'
-            >
-              seoyikim/react-component
+            <a href='https://github.com/seoyikim/cui' target='_blank'>
+              seoyikim/cui
             </a>
             <br />
-            프로젝트명: react-component
+            프로젝트명: cui
           </p>
         </div>
       </section>

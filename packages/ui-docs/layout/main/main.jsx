@@ -1,5 +1,5 @@
-import Header from '../header/header';
-import Sidebar from '../sidebar/sidebar';
+import Header from '../Header/header';
+import Sidebar from '../Sidebar/sidebar';
 import styles from './main.module.scss';
 
 export default function Main({ children }) {

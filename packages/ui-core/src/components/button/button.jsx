@@ -22,9 +22,9 @@ const Button = React.forwardRef(
   ) => {
     const buttonClass = classNames(
       styles['cui-button'],
-      styles[`cui-button--variant-${variant}`],
-      styles[`cui-button--size-${size}`],
-      styles[`cui-button--color-${color}`],
+      styles['cui-button--variant-' + variant],
+      styles['cui-button--size-' + size],
+      styles['cui-button--color-' + color],
       {
         [styles['cui-button--full-width']]: fullWidth,
         [styles['cui-button--disabled']]: disabled,

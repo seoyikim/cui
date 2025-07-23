@@ -1,4 +1,4 @@
-import Main from '../layout/main/main';
+import Main from '../layout/Main/main';
 import '../styles/main.scss';
 
 export default function MyApp({ Component, pageProps }) {
