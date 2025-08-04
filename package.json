@@ -8,15 +8,13 @@
   ],
   "scripts": {
     "dev": "cd packages/ui-docs && npm run dev",
-    "build": "npm run build:core && npm run build:docs",
-    "build:core": "cd packages/ui-core && npm run build",
+    "build": "npm run build:docs",
     "build:docs": "cd packages/ui-docs && npm run build",
     "lint": "eslint . --ext .js,.jsx,.mjs",
     "lint:fix": "eslint . --ext .js,.jsx,.mjs --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "clean": "npm run clean:core && npm run clean:docs",
-    "clean:core": "cd packages/ui-core && npm run clean",
+    "clean": "npm run clean:docs",
     "clean:docs": "cd packages/ui-docs && npm run clean"
   },
   "dependencies": {
