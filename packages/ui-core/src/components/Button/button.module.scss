@@ -10,6 +10,7 @@
     font-family: inherit;
     font-weight: 500;
     transition: all 0.2s ease-in-out;
+    gap: 8px;
 
     // Variants
     &--variant {
@@ -106,6 +107,37 @@
         cursor: not-allowed;
         pointer-events: none;
     }
+
+    &--rounded {
+        &-sm {
+            border-radius: 8px;
+        }
+
+        &-md {
+            border-radius: 12px;
+        }
+        &-lg {
+            border-radius: 16px;
+        }
+        &-xl {
+            border-radius:20px;
+        }
+        &-pill {
+            border-radius:9999px;
+        }
+    }
+
+    &__start-icon,
+    &__end-icon {
+        display: flex;
+        align-items: center;
+        font-size: inherit;
+    }
+}
+
+.cui-button__content {
+    display: flex;
+    align-items: center;
 }
 
 // button group

@@ -40,29 +40,19 @@ export default function Sidebar() {
   const router = useRouter();
 
   return (
-    <aside className={styles['cui-sidebar']}>
-      <ul className={styles['cui-sidebar-list']}>
-        <li className={styles['cui-sidebar-item']}>
-          <Link
-            href='/'
-            className={`${styles['cui-sidebar-link']} ${
-              router.pathname === '/' ? styles.active : ''
-            }`}
-          >
-            Overview
-          </Link>
-        </li>
+    <aside className={styles.sidebar}>
+      <ul className={styles.sidebar__list}>
         {sidebarItems.map((section, sectionIndex) => (
-          <li className={styles['cui-sidebar-item']} key={sectionIndex}>
-            <span className={styles['cui-sidebar-title']}>{section.title}</span>
-            <ul className={styles['cui-sidebar-sublist']}>
+          <li className={styles.sidebar__item} key={sectionIndex}>
+            <span className={styles.sidebar__title}>{section.title}</span>
+            <ul className={styles.sidebar__sublist}>
               {section.items.map((item, itemIndex) => (
-                <li className={styles['cui-sidebar-subitem']} key={itemIndex}>
+                <li className={styles.sidebar__subitem} key={itemIndex}>
                   <Link
                     href={`/components/${item.path}`}
-                    className={`${styles['cui-sidebar-sublink']} ${
+                    className={`${styles.sidebar__link} ${
                       router.pathname === `/components/${item.path}`
-                        ? styles.active
+                        ? styles['sidebar__link--active']
                         : ''
                     }`}
                   >

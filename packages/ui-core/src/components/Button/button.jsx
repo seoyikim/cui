@@ -16,6 +16,9 @@ const Button = React.forwardRef(
       onClick,
       href,
       target,
+      startIcon,
+      endIcon,
+      rounded,
       ...props
     },
     ref
@@ -29,6 +32,7 @@ const Button = React.forwardRef(
         [styles['cui-button--full-width']]: fullWidth,
         [styles['cui-button--disabled']]: disabled,
       },
+      rounded && styles['cui-button--rounded-' + rounded],
       className
     );
 
@@ -42,6 +46,18 @@ const Button = React.forwardRef(
       }
     };
 
+    const renderContent = () => (
+      <>
+        {startIcon && (
+          <span className={styles['cui-button__start-icon']}>{startIcon}</span>
+        )}
+        <span className={styles['cui-button__content']}>{children}</span>
+        {endIcon && (
+          <span className={styles['cui-button__end-icon']}>{endIcon}</span>
+        )}
+      </>
+    );
+
     // href가 있으면 a 태그로 렌더링
     if (href) {
       return (
@@ -53,7 +69,7 @@ const Button = React.forwardRef(
           target={target}
           {...props}
         >
-          {children}
+          {renderContent()}
         </a>
       );
     }
@@ -67,7 +83,7 @@ const Button = React.forwardRef(
         onClick={handleClick}
         {...props}
       >
-        {children}
+        {renderContent()}
       </button>
     );
   }
@@ -77,6 +93,7 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   variant: PropTypes.oneOf(['contained', 'outlined', 'text', 'underlined']),
   size: PropTypes.oneOf(['small', 'medium', 'large', 'inline']),
+  rounded: PropTypes.oneOf(['sm', 'md', 'lg', 'xl', 'pill']),
   color: PropTypes.string,
   disabled: PropTypes.bool,
   fullWidth: PropTypes.bool,
@@ -84,6 +101,8 @@ Button.propTypes = {
   onClick: PropTypes.func,
   href: PropTypes.string,
   target: PropTypes.string,
+  startIcon: PropTypes.node,
+  endIcon: PropTypes.node,
 };
 
 Button.displayName = 'Button';

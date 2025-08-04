@@ -1,6 +1,53 @@
 .header {
-    background-color: #222;
-    color: #fff;
-    padding: 1rem;
-    font-family: 'Noto Sans KR', sans-serif;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 16px 0;
+    position: sticky;
+    top:0;
+    background-color: #fff;
+    z-index: 10;
+
+    &__content {
+        display: flex;
+        align-items: center;
+        gap:36px;
+    }
+
+    &__logo {
+        width: 80px;
+    }
+
+    &__nav {
+        // nav styles
+    }
+
+    &__navList {
+        display: flex;
+        list-style: none;
+        gap: 24px;
+    }
+
+    &__navItem {
+        // nav item styles
+    }
+
+    &__navLink {
+        text-decoration: none;
+        color: #52525b;
+        transition: color 0.2s;
+
+        &:hover,
+        &--active {
+            color: #000;
+        }
+    }
+
+    &__right {
+        margin-left: auto;
+    }
+
+    &__githubLink {
+        display:block;
+        width: 24px;
+        height: 24px;
+    }
 }

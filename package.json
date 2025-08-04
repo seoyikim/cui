@@ -2,15 +2,22 @@
   "name": "react-component",
   "version": "0.1.0",
   "private": true,
-    "workspaces": [
+  "workspaces": [
     "packages/ui-core",
     "packages/ui-docs"
   ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "cd packages/ui-docs && npm run dev",
+    "build": "npm run build:core && npm run build:docs",
+    "build:core": "cd packages/ui-core && npm run build",
+    "build:docs": "cd packages/ui-docs && npm run build",
+    "lint": "eslint . --ext .js,.jsx,.mjs",
+    "lint:fix": "eslint . --ext .js,.jsx,.mjs --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "npm run clean:core && npm run clean:docs",
+    "clean:core": "cd packages/ui-core && npm run clean",
+    "clean:docs": "cd packages/ui-docs && npm run clean"
   },
   "dependencies": {
     "next": "15.3.5",

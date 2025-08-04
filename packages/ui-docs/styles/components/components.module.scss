@@ -1,0 +1,58 @@
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.category {
+    .title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #1a1a1a;
+    }
+
+    .description {
+        font-size: 1rem;
+        color: #666;
+        margin-bottom: 24px;
+        line-height: 1.5;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.card {
+    display: block;
+    padding: 24px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: #007acc;
+        box-shadow: 0 4px 12px rgba(0, 122, 204, 0.1);
+        transform: translateY(-2px);
+    }
+
+    h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #1a1a1a;
+    }
+
+    p {
+        font-size: 0.875rem;
+        color: #666;
+        line-height: 1.5;
+        margin: 0;
+    }
+}

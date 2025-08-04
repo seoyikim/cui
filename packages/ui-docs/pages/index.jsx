@@ -23,13 +23,16 @@ export default function HomePage() {
               <strong>Next.js:</strong> 15.3.5
             </li>
             <li>
+              <strong>React:</strong> 19.0.0
+            </li>
+            <li>
               <strong>Node.js:</strong> 20.18.0
             </li>
             <li>
               <strong>npm:</strong> 10.8.2
             </li>
             <li>
-              <strong>구성:</strong> React + Next.js + UI 라이브러리 구조
+              <strong>구성:</strong> Monorepo + Next.js + UI 라이브러리 구조
             </li>
           </ul>
         </div>
@@ -99,7 +102,15 @@ export default function HomePage() {
               </tr>
               <tr>
                 <td>ui-docs/layout/</td>
-                <td>문서 레이아웃 구성 (Header, Sidebar 등)</td>
+                <td>레이아웃 컴포넌트 (Header, Main, Sidebar, Container)</td>
+              </tr>
+              <tr>
+                <td>ui-docs/shared/</td>
+                <td>문서 전용 공통 컴포넌트 (CodeBlock, ExampleBlock 등)</td>
+              </tr>
+              <tr>
+                <td>ui-docs/config/</td>
+                <td>설정 파일 (next.config.js, netlify.toml)</td>
               </tr>
               <tr>
                 <td>ui-docs/styles/</td>
@@ -210,6 +221,28 @@ export default function HomePage() {
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div className='cui-overview__box'>
+          <h3>개발 스크립트</h3>
+          <h4>루트 레벨 스크립트</h4>
+          <pre>
+            {`npm run dev          # ui-docs 개발 서버 실행
+npm run build        # ui-core + ui-docs 빌드
+npm run build:core   # ui-core만 빌드
+npm run build:docs   # ui-docs만 빌드
+npm run clean        # 모든 빌드 파일 정리
+npm run lint         # ESLint 검사
+npm run format       # Prettier 포맷팅`}
+          </pre>
+          <br />
+          <h4>ui-core 스크립트</h4>
+          <pre>
+            {`cd packages/ui-core
+npm run build        # Rollup으로 빌드
+npm run dev          # 개발 모드 빌드
+npm run clean        # dist 폴더 정리`}
+          </pre>
         </div>
 
         <div className='cui-overview__box'>
