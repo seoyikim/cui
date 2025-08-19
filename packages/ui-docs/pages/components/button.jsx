@@ -1,4 +1,4 @@
-import { Button } from 'ui-core';
+import { Button, Icon } from 'ui-core';
 import { ComponentExample, ComponentHeader } from '../../shared';
 
 // 아이콘 컴포넌트들
@@ -88,11 +88,19 @@ export default function ButtonDemoPage() {
       <ComponentExample
         title='아이콘'
         description='startIcon과 endIcon prop으로 버튼 앞뒤에 아이콘을 추가할 수 있습니다.'
-        code={`<Button startIcon={<DeleteIcon />}>Delete</Button>
+        code={`<Button startIcon={<Icon width={16} height={16}><DeleteIcon /></Icon>}>Delete</Button>
 <Button endIcon={<ArrowIcon />}>다음</Button>
 <Button endIcon={<span>+</span>}>추가</Button>`}
       >
-        <Button startIcon={<DeleteIcon />}>Delete</Button>
+        <Button
+          startIcon={
+            <Icon width={16} height={16}>
+              <DeleteIcon />
+            </Icon>
+          }
+        >
+          Delete
+        </Button>
         <Button endIcon={<ArrowIcon />}>다음</Button>
         <Button endIcon={<span>+</span>}>추가</Button>
       </ComponentExample>

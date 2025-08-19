@@ -6,6 +6,13 @@ $color-dark-red: #c82333;
 $color-gray-light-transparent: rgba(108, 117, 125, 0.08);
 $color-red-light-transparent: rgba(220, 53, 69, 0.08);
 
+// Design System Colors
+$color-gray-100: #d4d4d8;
+$color-gray-500: #999999;
+$color-gray-900: #212121;
+$color-error: #ef4444;
+$color-blue: #3b82f6;
+
 // Button
 $button-primary-background: $color-black;
 $button-primary-background-hover: $color-dark-gray;
@@ -14,10 +21,40 @@ $button-primary-text: $color-black;
 $button-text-light: $color-white;
 
 // Secondary 
-$button-secondary-background: #999999;
+$button-secondary-background: $color-gray-500;
 $button-secondary-background-hover: #7a7a7a;
-$button-secondary-border: #999999;
+$button-secondary-border: $color-gray-500;
 $button-secondary-text: $color-white;
 $button-secondary-background-hover-outlined: rgba(153, 153, 153, 0.12);
 $button-secondary-background-hover-text: rgba(153, 153, 153, 0.12);
 $button-secondary-text-light: $color-white;
+
+// Form Components (공통)
+$form-size: 20px;
+$form-radius: 4px;
+$form-border: $color-gray-100;
+$form-bg: $color-white;
+$form-focus: $color-gray-900;
+$form-error: $color-error;
+$form-disabled: $color-gray-500;
+$form-readonly: #6b7280;
+$form-label: $color-gray-900;
+$form-label-disabled: $form-disabled;
+$form-label-readonly: $form-readonly;
+$form-checked-bg: $color-gray-900;
+$form-checked-border: $color-gray-900;
+$form-icon: $color-white;
+$form-invalid: $form-error;
+$form-arrow: $color-gray-500;
+
+// Spacing (공통)
+$spacing-xs: 0.25rem;
+$spacing-small: 0.5rem;
+$spacing-medium: 1rem;
+$spacing-large: 1.5rem;
+$spacing-xl: 2rem;
+
+// Border radius (공통)
+$border-radius: 4px;
+$border-radius-sm: 2px;
+$border-radius-lg: 8px;

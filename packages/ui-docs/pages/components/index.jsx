@@ -16,6 +16,13 @@ const componentCategories = [
     ],
   },
   {
+    title: 'Icon',
+    description: '아이콘 컴포넌트',
+    items: [
+      { name: 'Icon', path: 'icon', description: '기본 아이콘 컴포넌트' },
+    ],
+  },
+  {
     title: 'Form',
     description: '폼 입력 컴포넌트들',
     items: [
@@ -24,34 +31,21 @@ const componentCategories = [
         path: 'inputText',
         description: '텍스트 입력 필드',
       },
+      { name: 'Checkbox', path: 'checkbox', description: '체크박스 컴포넌트' },
+      { name: 'Radio', path: 'radio', description: '라디오 버튼 컴포넌트' },
+      {
+        name: 'Select',
+        path: 'select',
+        description: '선택 박스 컴포넌트',
+      },
       {
         name: 'Textarea',
         path: 'textarea',
         description: '여러 줄 텍스트 입력',
       },
-      { name: 'Checkbox', path: 'checkbox', description: '체크박스 컴포넌트' },
-      {
-        name: 'SelectBox',
-        path: 'selectBox',
-        description: '선택 박스 컴포넌트',
-      },
-    ],
-  },
-  {
-    title: 'Data',
-    description: '데이터 표시 컴포넌트',
-    items: [
-      { name: 'Table', path: 'table', description: '테이블 컴포넌트' },
-      { name: 'Tag', path: 'tag', description: '태그 컴포넌트' },
-      { name: 'Badge', path: 'badge', description: '배지 컴포넌트' },
-    ],
-  },
-  {
-    title: 'Feedback',
-    description: '사용자 피드백 컴포넌트',
-    items: [
-      { name: 'Alert', path: 'alert', description: '알림 컴포넌트' },
-      { name: 'Toast', path: 'toast', description: '토스트 메시지' },
+      { name: 'Switch', path: 'switch', description: '스위치 컴포넌트' },
+      { name: 'File', path: 'file', description: '파일 업로드 컴포넌트' },
+      { name: 'Counter', path: 'counter', description: '카운터 컴포넌트' },
     ],
   },
 ];

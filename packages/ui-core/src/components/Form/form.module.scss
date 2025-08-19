@@ -1,0 +1,832 @@
+@use '../../styles/abstracts/variables' as *;
+
+// ===== Form Components =====
+
+// 공통 Form 스타일 믹스인
+@mixin form-base {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: $form-bg;
+    border: 1px solid $form-border;
+    border-radius: $form-radius;
+    transition: all 0.2s ease-in-out;
+}
+
+@mixin form-focus {
+    outline: 2px solid $form-focus;
+    outline-offset: 2px;
+}
+
+@mixin form-disabled {
+    background-color: $color-gray-light-transparent;
+    border-color: $form-disabled;
+    cursor: default;
+    opacity: 0.6;
+
+    .cui-radio__label,
+    .cui-checkbox__label {
+        color: $form-label-disabled;
+    }
+}
+
+@mixin form-invalid {
+    border-color: $form-error;
+}
+
+@mixin form-readonly {
+    cursor: default;
+
+    .cui-radio__label,
+    .cui-checkbox__label {
+        color: $form-label-readonly;
+    }
+}
+
+// ===== Checkbox Component =====
+.cui-checkbox {
+    @include form-base;
+    width: $form-size;
+    height: $form-size;
+
+    &--checked {
+        background-color: $form-checked-bg;
+        border-color: $form-checked-border;
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 14px;
+        height: 14px;
+        transform: translate(-50%, -50%);
+        color: $form-icon;
+        pointer-events: none;
+    }
+
+    &__wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-small;
+        cursor: pointer;
+        user-select: none;
+
+        &--disabled {
+            cursor: default;
+
+            .cui-checkbox__label-wrapper {
+                pointer-events: none;
+            }
+
+            .cui-checkbox {
+                @include form-disabled;
+            }
+
+            .cui-checkbox--checked {
+                background-color: $form-disabled;
+                border-color: $form-disabled;
+            }
+
+            .cui-checkbox__label {
+                color: $form-label-disabled;
+            }
+        }
+
+        &--readonly {
+            @include form-readonly;
+
+            .cui-checkbox__label-wrapper {
+                pointer-events: none;
+            }
+        }
+
+        &--invalid {
+            .cui-checkbox {
+                @include form-invalid;
+            }
+
+            .cui-checkbox__input:focus-visible+.cui-checkbox__label-wrapper .cui-checkbox {
+                outline: 2px solid $form-invalid;
+                outline-offset: 2px;
+            }
+        }
+    }
+
+    &__input {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        width: $form-size;
+        height: $form-size;
+        margin: 0;
+        cursor: inherit;
+
+        &:focus-visible+.cui-checkbox__label-wrapper .cui-checkbox {
+            @include form-focus;
+        }
+    }
+
+    &__label-wrapper {
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-small;
+        cursor: inherit;
+    }
+
+    &__label {
+        font-size: 1rem;
+        color: $form-label;
+    }
+}
+
+// ===== Radio Component =====
+.cui-radio {
+    @include form-base;
+    width: $form-size;
+    height: $form-size;
+    border-radius: 50%;
+
+    &--checked {
+        background-color: $form-checked-bg;
+        border-color: $form-checked-border;
+    }
+
+    &--readonly {
+        @include form-readonly;
+
+        .cui-radio__label-wrapper {
+            pointer-events: none;
+        }
+    }
+
+    &--invalid {
+        @include form-invalid;
+    }
+
+    &__dot {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 8px;
+        height: 8px;
+        transform: translate(-50%, -50%);
+        background-color: $form-icon;
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    &--checked &__dot {
+        opacity: 1;
+    }
+
+    &__wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-small;
+        cursor: pointer;
+        user-select: none;
+
+        &--disabled {
+            cursor: default;
+
+            .cui-radio__label-wrapper {
+                pointer-events: none;
+            }
+
+            .cui-radio {
+                @include form-disabled;
+            }
+
+            .cui-radio--checked {
+                background-color: $form-disabled;
+                border-color: $form-disabled;
+            }
+
+            .cui-radio__label {
+                color: $form-label-disabled;
+            }
+        }
+
+        &--readonly {
+            @include form-readonly;
+
+            .cui-radio__label-wrapper {
+                pointer-events: none;
+            }
+        }
+
+        &--invalid {
+            .cui-radio {
+                @include form-invalid;
+            }
+
+            .cui-radio__input:focus-visible+.cui-radio__label-wrapper .cui-radio {
+                outline: 2px solid $form-invalid;
+                outline-offset: 2px;
+            }
+        }
+    }
+
+    &__input {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        width: $form-size;
+        height: $form-size;
+        margin: 0;
+        cursor: inherit;
+
+        &:focus-visible+.cui-radio__label-wrapper .cui-radio {
+            @include form-focus;
+        }
+    }
+
+    &__label-wrapper {
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-small;
+        cursor: inherit;
+    }
+
+    &__label {
+        font-size: 1rem;
+        color: $form-label;
+    }
+}
+
+// ===== Radio Group Component =====
+.cui-radio-group {
+    display: flex;
+    flex-direction: column;
+
+    &--row {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    &--column {
+        flex-direction: column;
+    }
+
+    &--small {
+        gap: $spacing-small;
+    }
+
+    &--medium {
+        gap: $spacing-medium;
+    }
+
+    &--large {
+        gap: $spacing-large;
+    }
+
+    &--disabled {
+        .cui-radio {
+            @include form-disabled;
+        }
+    }
+
+    &--invalid {
+        .cui-radio {
+            @include form-invalid;
+        }
+    }
+
+    &--readonly {
+        .cui-radio {
+            @include form-readonly;
+        }
+    }
+}
+
+// ===== Input Component =====
+.cui-input {
+    @include form-base;
+    width: 100%;
+    height: 40px;
+    padding: 0 $spacing-medium;
+    font-size: 1rem;
+    color: $form-label;
+    background-color: $form-bg;
+    border: 1px solid $form-border;
+    border-radius: $form-radius;
+    transition: all 0.2s ease-in-out;
+
+    &::placeholder {
+        color: $form-disabled;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $form-focus;
+    }
+
+    &--invalid {
+        border-color: $form-error;
+
+        &:focus {
+            border-color: $form-error;
+            box-shadow: 0 0 0 2px rgba($form-error, 0.2);
+        }
+    }
+
+    &--disabled {
+        background-color: $form-bg;
+        border-color: $form-disabled;
+        color: $form-label-disabled;
+        cursor: default;
+        opacity: 0.6;
+    }
+
+    &--readonly {
+        background-color: $form-bg;
+        border-color: $form-border;
+        color: $form-label-readonly;
+        cursor: default;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-small;
+
+        &--invalid {
+            .cui-input__label {
+                color: $form-error;
+            }
+        }
+
+        &--disabled {
+            .cui-input__label {
+                color: $form-label-disabled;
+            }
+        }
+
+        &--readonly {
+            .cui-input__label {
+                color: $form-label-readonly;
+            }
+        }
+    }
+
+    &__label {
+        font-size: 1rem;
+        color: $form-label;
+    }
+
+    &__required {
+        color: $form-error;
+        margin-left: 2px;
+    }
+
+    &__value {
+        color: $form-label;
+    }
+
+    &__text-wrapper {}
+
+    &__helper-text {
+        font-size: 0.75rem;
+        color: $form-disabled;
+    }
+
+    &__error-text {
+        font-size: 0.75rem;
+        color: $form-error;
+    }
+}
+
+// ===== Select Component =====
+.cui-select {
+    @include form-base;
+    justify-content: flex-start;
+    width: 100%;
+    height: 40px;
+    padding: 0 $spacing-medium;
+    font-size: 1rem;
+    color: $form-label;
+    background-color: $form-bg;
+    border: 1px solid $form-border;
+    border-radius: $form-radius;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    appearance: none;
+
+    &::-ms-expand {
+        display: none;
+    }
+
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    padding-right: 40px;
+
+    &:focus {
+        outline: none;
+    }
+
+    &--invalid {
+        border-color: $form-error;
+
+        &:focus {}
+    }
+
+    &--disabled {
+        background-color: $form-bg;
+        border-color: $form-disabled;
+        color: $form-label-disabled;
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    &--readonly {
+        background-color: $form-bg;
+        border-color: $form-border;
+        color: $form-label-readonly;
+        cursor: default;
+    }
+
+    &--custom {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-image: none;
+        padding-right: $spacing-medium;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &--open {}
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-small;
+        position: relative;
+
+        &--invalid {
+            .cui-select__label {
+                color: $form-error;
+            }
+        }
+
+        &--disabled {
+            .cui-select__label {
+                color: $form-label-disabled;
+            }
+        }
+
+        &--readonly {
+            .cui-select__label {
+                color: $form-label-readonly;
+            }
+        }
+    }
+
+    &__container {
+        position: relative;
+    }
+
+    &__dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        margin-top: 4px;
+        background-color: $form-bg;
+        border: 1px solid $form-border;
+        border-radius: $form-radius;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+        animation: selectDropdown 0.15s ease-out;
+    }
+
+    &__options {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    &__option {
+        padding: 8px 12px;
+        font-size: 1rem;
+        color: $form-label;
+        cursor: pointer;
+        transition: background-color 0.15s ease-in-out;
+
+        &:hover {
+            background-color: $color-gray-light-transparent;
+        }
+
+        &--selected {
+            background-color: rgba($color-gray-900, 0.1);
+            color: $color-gray-900;
+        }
+
+        &--disabled {
+            color: $form-disabled;
+            cursor: not-allowed;
+            background-color: $color-gray-light-transparent;
+
+            &:hover {
+                background-color: $color-gray-light-transparent;
+            }
+        }
+    }
+
+    &__text-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    &__helper-text {
+        font-size: 0.75rem;
+        color: $form-disabled;
+        margin: 0;
+    }
+
+    &__error-text {
+        font-size: 0.75rem;
+        color: $form-error;
+        margin: 0;
+    }
+
+    &__required {
+        color: $form-error;
+        margin-left: 2px;
+        display: inline-block;
+    }
+
+    &__value {
+        color: $form-label;
+    }
+
+    &__arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        transition: transform 0.2s ease-in-out;
+
+        // 커스텀 모드에서 CSS로 화살표 관리
+        &::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .cui-select--open & {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+// 드롭다운 애니메이션
+@keyframes selectDropdown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ===== Textarea Component =====
+.cui-textarea {
+    @include form-base;
+    width: 100%;
+    min-height: 80px;
+    padding: $spacing-medium;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: $form-label;
+    background-color: $form-bg;
+    border: 1px solid $form-border;
+    border-radius: $form-radius;
+    transition: all 0.2s ease-in-out;
+    resize: vertical;
+    font-family: inherit;
+
+    &::placeholder {
+        color: $form-disabled;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $form-focus;
+    }
+
+    &--invalid {
+        border-color: $form-error;
+
+        &:focus {
+            border-color: $form-error;
+            box-shadow: 0 0 0 2px rgba($form-error, 0.2);
+        }
+    }
+
+    &--disabled {
+        background-color: $form-bg;
+        border-color: $form-disabled;
+        color: $form-label-disabled;
+        cursor: default;
+        opacity: 0.6;
+        resize: none;
+    }
+
+    &--readonly {
+        background-color: $form-bg;
+        border-color: $form-border;
+        color: $form-label-readonly;
+        cursor: default;
+        resize: none;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-small;
+
+        &--invalid {
+            .cui-textarea__label {
+                color: $form-error;
+            }
+        }
+
+        &--disabled {
+            .cui-textarea__label {
+                color: $form-label-disabled;
+            }
+        }
+
+        &--readonly {
+            .cui-textarea__label {
+                color: $form-label-readonly;
+            }
+        }
+    }
+
+    &__label {
+        font-size: 1rem;
+        color: $form-label;
+    }
+
+    &__required {
+        color: $form-error;
+        margin-left: 2px;
+    }
+
+    &__text-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    &__helper-text {
+        font-size: 0.75rem;
+        color: $form-disabled;
+        margin: 0;
+    }
+
+    &__error-text {
+        font-size: 0.75rem;
+        color: $form-error;
+        margin: 0;
+    }
+}
+
+// ===== Switch Component =====
+.cui-switch {
+    position: relative;
+    display: inline-block;
+    background-color: $form-border;
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    width: 44px;
+    height: 24px;
+
+    &--checked {
+        background-color: $form-checked-bg;
+        border-color: $form-checked-border;
+    }
+
+    &--disabled {
+        background-color: $form-disabled;
+        cursor: default;
+        opacity: 0.6;
+    }
+
+    &--readonly {
+        cursor: default;
+    }
+
+    &__thumb {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 20px;
+        height: 20px;
+        background-color: $form-bg;
+        border-radius: 50%;
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+        .cui-switch--checked & {
+            transform: translateX(20px);
+        }
+
+        .cui-switch--disabled & {
+            background-color: $form-disabled;
+        }
+    }
+
+    &__wrapper {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-small;
+        cursor: pointer;
+        user-select: none;
+
+        &--disabled {
+            cursor: default;
+
+            .cui-switch__label-wrapper {
+                pointer-events: none;
+            }
+
+            .cui-switch {
+                cursor: default;
+            }
+
+            .cui-switch__label {
+                color: $form-label-disabled;
+            }
+        }
+
+        &--readonly {
+            cursor: default;
+
+            .cui-switch__label-wrapper {
+                pointer-events: none;
+            }
+
+            .cui-switch {
+                cursor: default;
+            }
+
+            .cui-switch__label {
+                color: $form-label-readonly;
+            }
+        }
+    }
+
+    &__input {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        cursor: inherit;
+
+        &:focus-visible+.cui-switch__label-wrapper .cui-switch {
+            @include form-focus;
+        }
+    }
+
+    &__label-wrapper {
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-small;
+        cursor: inherit;
+    }
+
+    &__label {
+        font-size: 1rem;
+        color: $form-label;
+    }
+}

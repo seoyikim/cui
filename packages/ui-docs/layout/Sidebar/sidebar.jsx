@@ -11,26 +11,62 @@ const sidebarItems = [
     ],
   },
   {
+    title: 'Icon',
+    items: [{ name: 'Icon', path: 'icon' }],
+  },
+  {
     title: 'Form',
     items: [
       { name: 'Input Text', path: 'inputText' },
-      { name: 'Textarea', path: 'textarea' },
       { name: 'Checkbox', path: 'checkbox' },
-      { name: 'SelectBox', path: 'selectBox' },
+      { name: 'Radio', path: 'radio' },
+      { name: 'Select', path: 'select' },
+      { name: 'Textarea', path: 'textarea' },
+      { name: 'Switch', path: 'switch' },
+      { name: 'File', path: 'file' },
+      { name: 'Counter', path: 'counter' },
     ],
   },
   {
-    title: 'Data',
+    title: 'Data Display',
     items: [
       { name: 'Table', path: 'table' },
-      { name: 'Tag', path: 'tag' },
+      { name: 'Card', path: 'card' },
       { name: 'Badge', path: 'badge' },
+      { name: 'Tag', path: 'tag' },
+      { name: 'List', path: 'list' },
+    ],
+  },
+  {
+    title: 'Navigation',
+    items: [
+      { name: 'Tabs', path: 'tabs' },
+      { name: 'Pagination', path: 'pagination' },
+      { name: 'Breadcrumbs', path: 'breadcrumbs' },
+      { name: 'Menu / Dropdown', path: 'menu' },
+    ],
+  },
+  {
+    title: 'Overlay',
+    items: [
+      { name: 'Modal', path: 'modal' },
+      { name: 'Tooltip', path: 'tooltip' },
+    ],
+  },
+  {
+    title: 'Layout',
+    items: [
+      { name: 'Container', path: 'container' },
+      { name: 'Grid', path: 'grid' },
+      { name: 'Stack', path: 'stack' },
+      { name: 'Divider', path: 'divider' },
     ],
   },
   {
     title: 'Feedback',
     items: [
       { name: 'Alert', path: 'alert' },
+      { name: 'Progress', path: 'progress' },
       { name: 'Toast', path: 'toast' },
     ],
   },
